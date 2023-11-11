@@ -6,6 +6,7 @@ import pt.vinizorza.fuelprices.client.DgegClient;
 import pt.vinizorza.fuelprices.client.response.StationResponse;
 import pt.vinizorza.fuelprices.entity.Station;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +32,7 @@ public class StationService {
 
         return stations.stream()
                 .filter(s -> s.getDistance() <= radius)
+                .sorted(Comparator.comparing(Station::getPrice))
                 .collect(Collectors.toList());
     }
 

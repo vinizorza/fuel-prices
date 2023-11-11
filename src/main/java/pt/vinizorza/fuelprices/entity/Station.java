@@ -4,7 +4,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import pt.vinizorza.fuelprices.client.response.StationResponse;
+import pt.vinizorza.fuelprices.util.CurrencyFormatter;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +19,7 @@ public class Station {
     private String name;
     private String type;
     private String city;
-    private String price;
+    private BigDecimal price;
     private String brand;
     private String fuel;
     private String lastUpdate;
@@ -35,7 +37,7 @@ public class Station {
                 .name(response.getNome())
                 .type(response.getTipoPosto())
                 .city(response.getMunicipio())
-                .price(response.getPreco())
+                .price(CurrencyFormatter.toBigDecimal(response.getPreco()))
                 .brand(response.getMarca())
                 .fuel(response.getCombustivel())
                 .lastUpdate(response.getDataAtualizacao())
