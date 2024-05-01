@@ -17,6 +17,7 @@ public class StationController {
     @Autowired
     private StationService service;
 
+    @CrossOrigin
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Station>> getStations(@RequestParam double latitude,
                                                      @RequestParam double longitude,
